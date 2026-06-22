@@ -1,597 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5" />
-    <title>DentalCare · responsive</title>
-    <!-- Font Awesome (optional but nice) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        /* ----- reset & base ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-            scroll-behavior: smooth;
-        }
-        body {
-            background: #f9fbfd;
-            color: #1e2a3a;
-            line-height: 1.5;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        h2 {
-            font-size: 2.2rem;
-            letter-spacing: -0.5px;
-            color: #0b2b3b;
-            margin-bottom: 1.5rem;
-        }
-        section {
-            padding: 4rem 1.5rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        /* ----- navbar ----- */
-        .navbar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.8rem 2rem;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(6px);
-            box-shadow: 0 4px 20px rgba(0, 20, 30, 0.06);
-            position: sticky;
-            top: 0;
-            z-index: 99;
-            border-radius: 0 0 24px 24px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .logo img {
-            height: 44px;
-            width: auto;
-        }
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
-            list-style: none;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .nav-links a {
-            color: #1e3b4a;
-            transition: 0.2s;
-            padding: 0.3rem 0;
-            border-bottom: 2px solid transparent;
-        }
-        .nav-links a:hover {
-            color: #0077b6;
-            border-bottom-color: #0077b6;
-        }
-
-        /* ----- hero (main) ----- */
-        main#home {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 2rem 2rem 1rem;
-            max-width: 1280px;
-            margin: 0 auto;
-            gap: 1.5rem;
-        }
-        main#home article {
-            flex: 1 1 380px;
-        }
-        main#home article h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: #0a293a;
-        }
-        main#home article h1 span {
-            color: #0077b6;
-            background: linear-gradient(145deg, #0077b6, #00b4d8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        main#home article h4 {
-            font-weight: 400;
-            color: #2b4b5e;
-            margin: 0.4rem 0;
-            font-size: 1.05rem;
-        }
-        main#home article button {
-            margin-top: 1.8rem;
-            background: #0077b6;
-            border: none;
-            padding: 0.9rem 2.4rem;
-            border-radius: 60px;
-            font-size: 1rem;
-            font-weight: 600;
-            box-shadow: 0 10px 20px -8px rgba(0, 119, 182, 0.4);
-            transition: 0.2s;
-        }
-        main#home article button a {
-            color: white;
-            letter-spacing: 0.3px;
-        }
-        main#home article button:hover {
-            transform: scale(1.02);
-            background: #005f8a;
-        }
-        .bottom-right-image {
-            flex: 0 1 400px;
-            height: auto;
-            max-height: 480px;
-            object-fit: contain;
-            filter: drop-shadow(0 20px 30px rgba(0, 40, 60, 0.15));
-        }
-
-        /* ----- services ----- */
-        #serv h2 {
-            text-align: center;
-        }
-        .crds {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-        .crd {
-            background: white;
-            border-radius: 32px;
-            padding: 1.8rem 1.5rem 2rem;
-            flex: 1 1 220px;
-            max-width: 280px;
-            box-shadow: 0 12px 30px rgba(0, 20, 30, 0.06);
-            transition: 0.25s;
-            text-align: center;
-            border: 1px solid rgba(0, 119, 182, 0.08);
-        }
-        .crd:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 119, 182, 0.10);
-        }
-        .crd .bg img {
-            height: 110px;
-            object-fit: contain;
-            margin: 0 auto;
-        }
-        .crd h3 {
-            margin: 0.8rem 0 0.4rem;
-            color: #0b2b3b;
-        }
-        .crd p {
-            color: #335566;
-            font-size: 0.95rem;
-        }
-
-        /* ----- dentist slider ----- */
-        #menu {
-            background: #eaf3f8;
-            border-radius: 60px 60px 20px 20px;
-            padding: 3rem 1.5rem;
-        }
-        .login {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-        .login a {
-            background: #0077b6;
-            color: white;
-            padding: 0.6rem 1.8rem;
-            border-radius: 60px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        .login a:hover {
-            background: #005f8a;
-        }
-        .slider {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-        .card {
-            background: white;
-            border-radius: 40px;
-            padding: 1.8rem 1.5rem 2rem;
-            flex: 1 1 220px;
-            max-width: 280px;
-            text-align: center;
-            box-shadow: 0 12px 24px rgba(0, 20, 30, 0.06);
-        }
-        .card img {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 4px solid #c0e3f0;
-        }
-        .card h3 {
-            font-size: 1.3rem;
-        }
-        .card h5 {
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        .card p {
-            color: #2f4f62;
-            font-size: 0.95rem;
-        }
-
-        /* ----- features / about ----- */
-        #features {
-            background: white;
-        }
-        .feature-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-        .feature-card {
-            background: #f5faff;
-            border-radius: 40px;
-            padding: 1.8rem 1.8rem 2rem;
-            flex: 1 1 240px;
-            max-width: 320px;
-            text-align: center;
-            border: 1px solid #d7eaf3;
-            transition: 0.2s;
-        }
-        .feature-card:hover {
-            background: white;
-            border-color: #0077b6;
-        }
-        .feature-card img {
-            height: 70px;
-            margin: 0 auto 0.8rem;
-        }
-        .feature-card h3 {
-            color: #0b2b3b;
-            margin-bottom: 0.4rem;
-        }
-        .feature-card p {
-            color: #335566;
-            font-size: 0.95rem;
-        }
-
-        /* ----- contact / extra ----- */
-        #extra {
-            background: #0b2b3b;
-            color: #e8f0f5;
-            border-radius: 40px 40px 0 0;
-            padding: 3rem 1.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-        #extra .icon {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.4rem;
-        }
-        #extra .icon img {
-            height: 60px;
-            filter: brightness(0) invert(1);
-        }
-        #extra .icon h2 {
-            color: white;
-            margin-bottom: 0.2rem;
-        }
-        .contct p {
-            margin: 0.2rem 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-        .fb h2 {
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 0.4rem;
-        }
-        .fb p {
-            opacity: 0.9;
-            max-width: 380px;
-        }
-        .con {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .con img {
-            height: 38px;
-            filter: brightness(0) invert(1);
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .con img:hover {
-            transform: scale(1.08);
-            opacity: 0.8;
-        }
-
-        /* ----- responsive tweaks ----- */
-        @media screen and (max-width: 820px) {
-            .navbar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.8rem;
-                padding: 0.8rem 1.2rem;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 1.2rem;
-                font-size: 0.95rem;
-            }
-            main#home {
-                flex-direction: column-reverse;
-                text-align: center;
-                padding: 1rem 1.2rem;
-            }
-            main#home article h1 {
-                font-size: 2.6rem;
-            }
-            .bottom-right-image {
-                max-height: 300px;
-                flex: 0 1 240px;
-            }
-            h2 {
-                font-size: 1.9rem;
-            }
-            section {
-                padding: 2.5rem 1rem;
-            }
-            .crds, .slider, .feature-cards {
-                gap: 1.5rem;
-            }
-            #extra {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            #extra .icon {
-                align-items: center;
-            }
-            .fb p {
-                max-width: 100%;
-            }
-            .con {
-                justify-content: center;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .nav-links {
-                gap: 0.8rem;
-                font-size: 0.85rem;
-                flex-wrap: wrap;
-            }
-            .navbar {
-                padding: 0.6rem 0.8rem;
-            }
-            main#home article h1 {
-                font-size: 2.2rem;
-            }
-            main#home article button {
-                padding: 0.7rem 1.8rem;
-                font-size: 0.9rem;
-            }
-            .crd, .card, .feature-card {
-                flex: 1 1 100%;
-                max-width: 100%;
-            }
-            .bottom-right-image {
-                max-height: 220px;
-            }
-            #menu {
-                border-radius: 30px;
-            }
-            #extra {
-                border-radius: 30px 30px 0 0;
-                padding: 2rem 1rem;
-            }
-        }
-        /* small extra polish */
-        .nav-img {
-            border-radius: 12px;
-        }
-        .logo h2 {
-            font-size: 1.3rem;
-            margin: 0;
-            color: #0b2b3b;
-        }
-        .logo {
-            gap: 4px;
-        }
-        /* make button text white */
-        main#home article button a {
-            color: white;
-        }
-        /* service section fix */
-        #serv .crds:last-of-type {
-            margin-top: 0.5rem;
-        }
-        /* extra spacing */
-        .crd p, .card p {
-            margin-top: 0.2rem;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dental Clinic</title>
+    <!-- خط مودرن واحترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landingpage.css">
+    <link rel="icon" href="a.ico">
 </head>
 <body>
-    <!-- navbar -->
-    <nav class="navbar" id="home">
-        <div class="logo">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230077b6'/%3E%3Cpath d='M35 30 L65 30 L70 45 L30 45 Z' fill='white'/%3E%3Ccircle cx='40' cy='55' r='6' fill='white'/%3E%3Ccircle cx='60' cy='55' r='6' fill='white'/%3E%3C/svg%3E" alt="logo" class="nav-img" style="height:44px;" />
-            <h2>DENTAL</h2>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">    
+            
+            <h2>Dental<span>Care</span></h2>
         </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#serv">Service</a></li>
-            <li><a href="#menu">Our Dentist</a></li>
-            <li><a href="#features">About us</a></li>
+            <li><a href="#serv">Services</a></li>
+            <li><a href="#menu">Our Dentists</a></li>
+            <li><a href="#features">About Us</a></li>
             <li><a href="#extra">Contact</a></li>
         </ul>
-    </nav>
+        <div class="nav-actions">
+            <a href="../login-web/index.html" class="btn-secondary">Log In</a>
+        </div>
+    </header>
 
-    <!-- hero -->
-    <main id="home">
-        <article>
-            <h1>Dental Service <br />That You Can <br /><span>TRUST</span></h1>
-            <h4>Your smile is the key to your confidec!</h4>
-            <h4>We are here to provide the care your teeth deserve. book your appointment today</h4>
-            <h4>and start your jourey to healthy, radiant smile !</h4>
-            <button><a href="#"><b> book an appointment </b></a></button>
-        </article>
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Ccircle cx='200' cy='200' r='160' fill='%23e3f0f7'/%3E%3Cpath d='M120 180 L280 180 L280 260 L120 260 Z' fill='%230077b6' opacity='0.3'/%3E%3Ccircle cx='160' cy='220' r='20' fill='white'/%3E%3Ccircle cx='240' cy='220' r='20' fill='white'/%3E%3Cpath d='M150 280 L250 280' stroke='white' stroke-width='12' stroke-linecap='round'/%3E%3C/svg%3E" alt="smile" class="bottom-right-image" />
+    <!-- Hero Section -->
+    <main id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dental Service <br>That You Can <br><span>TRUST</span></h1>
+            <p class="hero-subtitle">Your smile is the key to your confidence! We are here to provide the care your teeth deserve. Book your appointment today and start your journey to a healthy, radiant smile!</p>
+            <a href="../clientrdv/rdv.php" class="btn-primary">Book an Appointment</a>
+        </div>
+        <div class="hero-image">
+            <img src="14.png" alt="Dental Care">
+        </div>
     </main>
 
-    <!-- services -->
-    <section id="serv">
-        <h2>Our Clinic Service</h2>
-        <div class="crds">
-            <div class="crd">
-                <div class="bg"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d4edf7'/%3E%3Cpath d='M30 45 L70 45 L70 60 L30 60 Z' fill='%230077b6'/%3E%3Ccircle cx='40' cy='35' r='8' fill='white'/%3E%3Ccircle cx='60' cy='35' r='8' fill='white'/%3E%3C/svg%3E" alt="cosmetic" /></div>
+    <!-- Services Section -->
+    <section id="serv" class="services">
+        <div class="section-title">
+            <h2>Our Clinic Services</h2>
+            <p>We provide top-tier dental care with modern technologies</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card"> 
+                <div class="service-icon-bg">
+                    <img src="19.png" alt="Cosmetic">
+                </div>
                 <h3>Cosmetic Dentistry</h3>
                 <p>Improves the appearance of teeth and smile through procedures like whitening.</p>
             </div>
-            <div class="crd">
-                <div class="bg"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d4edf7'/%3E%3Cpath d='M35 50 L65 50' stroke='%230077b6' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='25' fill='none' stroke='%230077b6' stroke-width='6'/%3E%3C/svg%3E" alt="hygiene" /></div>
+            <div class="service-card">
+                <div class="service-icon-bg">
+                    <img src="20.png" alt="Hygiene">
+                </div>
                 <h3>Oral Hygiene</h3>
-                <p>our team is ready to meet your needs Your smile deserves the best.</p>
+                <p>Our team is ready to meet your needs. Your smile deserves the best care.</p>
             </div>
-        </div>
-        <div class="crds">
-            <div class="crd">
-                <div class="bg"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d4edf7'/%3E%3Crect x='35' y='35' width='30' height='30' fill='%230077b6' rx='6'/%3E%3Ccircle cx='50' cy='50' r='10' fill='white'/%3E%3C/svg%3E" alt="pediatric" /></div>
-                <h3>Dental treatment</h3>
-                <p>Sesializes in dental care for children from birth to adolescence.</p>
+            <div class="service-card">
+                <div class="service-icon-bg">
+                    <img src="21.png" alt="Treatment">
+                </div>
+                <h3>Dental Treatment</h3>
+                <p>Specializes in dental care for children from birth to adolescence.</p>
             </div>
-            <div class="crd">
-                <div class="bg"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d4edf7'/%3E%3Cpath d='M30 50 L70 50 M50 30 L50 70' stroke='%230077b6' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%230077b6' stroke-width='6'/%3E%3C/svg%3E" alt="implants" /></div>
+            <div class="service-card">
+                <div class="service-icon-bg">
+                    <img src="22.png" alt="Implants">
+                </div>
                 <h3>Dental Implants</h3>
-                <p>Foucuses on replacing missing teeth with implants placed in the jawbone.</p>
+                <p>Focuses on replacing missing teeth with implants placed in the jawbone.</p>
             </div>
         </div>
     </section>
 
-    <!-- dentist -->
-    <section id="menu">
-        <div class="login">
-            <h2>Our Dentist</h2>
-            <a href="#"><b> log in </b></a>
+    <!-- Dentists Section -->
+    <section id="menu" class="dentists">
+        <div class="section-title">
+            <h2>Our Specialists</h2>
+            <p>Meet our team of professional and experienced dentists</p>
         </div>
-        <div class="slider">
-            <div class="card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='45' r='28' fill='%23b3d9e8'/%3E%3Ccircle cx='38' cy='40' r='5' fill='%231e2a3a'/%3E%3Ccircle cx='62' cy='40' r='5' fill='%231e2a3a'/%3E%3Cpath d='M40 60 Q50 70 60 60' stroke='%231e2a3a' stroke-width='4' fill='none'/%3E%3C/svg%3E" alt="dr nofel" />
-                <h3>Dr.NOFEL</h3>
-                <h5 style="color:#80ed99;">COSMITIC DENTISTRY</h5>
-                <p>Improves the appearance of teeth and smile through procedures like whitening and veneers</p>
+        <div class="dentists-grid">
+            <div class="dentist-card">
+                <div class="avatar-container">
+                    <img src="ac_.jpg" alt="Dr. Nofel">
+                </div>
+                <h3>Dr. NOFEL</h3>
+                <span class="specialty">Cosmetic Dentistry</span>
+                <p>Improves the appearance of teeth and smile through procedures like whitening and veneers.</p>
             </div>
-            <div class="card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='45' r='28' fill='%23b3d9e8'/%3E%3Ccircle cx='38' cy='40' r='5' fill='%231e2a3a'/%3E%3Ccircle cx='62' cy='40' r='5' fill='%231e2a3a'/%3E%3Crect x='40' y='58' width='20' height='12' fill='%231e2a3a' rx='4'/%3E%3C/svg%3E" alt="dr khalil" />
-                <h3>Dr.KHALIL</h3>
-                <h5 style="color:#80ed99;">PEDIATRIC DENTISTRY</h5>
-                <p>Sesializes in dental care for children from birth to adolescence</p>
+            <div class="dentist-card">
+                <div class="avatar-container">
+                    <img src="ab.jpg" alt="Dr. Khalil">
+                </div>
+                <h3>Dr. KHALIL</h3>
+                <span class="specialty">Pediatric Dentistry</span>
+                <p>Specializes in dental care for children from birth to adolescence.</p>
             </div>
-            <div class="card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='45' r='28' fill='%23b3d9e8'/%3E%3Ccircle cx='40' cy='40' r='5' fill='%231e2a3a'/%3E%3Ccircle cx='60' cy='40' r='5' fill='%231e2a3a'/%3E%3Cpath d='M42 65 L58 65' stroke='%231e2a3a' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E" alt="dr rahel" />
-                <h3>Dr.RAHEL</h3>
-                <h5 style="color:#80ed99;">IMPLANTOLOGY</h5>
-                <p>Foucuses on replacing missing teeth with implants placed in the jawbone</p>
+            <div class="dentist-card">
+                <div class="avatar-container">
+                    <img src="ad.jpg" alt="Dr. Rahel">
+                </div>
+                <h3>Dr. RAHEL</h3>
+                <span class="specialty">Implantology</span>
+                <p>Focuses on replacing missing teeth with implants placed in the jawbone.</p>
             </div>
         </div>
     </section>
 
-    <!-- about -->
-    <section id="features">
-        <h2>About Us?</h2>
-        <div class="feature-cards">
+    <!-- About / Features Section -->
+    <section id="features" class="features">
+        <div class="section-title">
+            <h2>Why Choose Us?</h2>
+        </div>
+        <div class="features-grid">
             <div class="feature-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d4edf7'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%230077b6' rx='8'/%3E%3Ccircle cx='50' cy='50' r='10' fill='white'/%3E%3C/svg%3E" alt="time" />
-                <h3>WORKING TIME</h3>
-                <p>Sunday to Thursday: 9:00 AM - 7:00 PM</p>
+                <img src="16.png" alt="Working Time">
+                <h3>Working Time</h3>
+                <p>Sunday to Thursday:<br>9:00 AM - 7:00 PM</p>
             </div>
             <div class="feature-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d4edf7'/%3E%3Cpath d='M30 40 L70 40 L70 60 L30 60 Z' fill='%230077b6'/%3E%3Ccircle cx='50' cy='35' r='10' fill='white'/%3E%3C/svg%3E" alt="treatment" />
-                <h3>GOOD TREATMENT</h3>
-                <p>We are dedicated to providing exceptional service that makes every visit a comfortable and pleasant experience.</p>
+                <img src="17.png" alt="Treatment">
+                <h3>Good Treatment</h3>
+                <p>We are dedicated to providing exceptional service that makes every visit a comfortable experience.</p>
             </div>
             <div class="feature-card">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d4edf7'/%3E%3Cpath d='M30 45 L70 45 L70 65 L30 65 Z' fill='%230077b6'/%3E%3Cpath d='M45 45 L55 45 L55 65 L45 65 Z' fill='white'/%3E%3C/svg%3E" alt="location" />
-                <h3>OUR LOCATION</h3>
-                <p>We are located in the heart of the city, easily accessible for your convenience.</p>
+                <img src="15.png" alt="Location">
+                <h3>Our Location</h3>
+                <p>Located in the heart of the city, easily accessible. Find us at [Insert Address].</p>
             </div>
         </div>
     </section>
 
-    <!-- contact -->
-    <section id="extra">
-        <div class="icon">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ffffff'/%3E%3Cpath d='M35 30 L65 30 L70 45 L30 45 Z' fill='%230077b6'/%3E%3Ccircle cx='40' cy='55' r='6' fill='%230077b6'/%3E%3Ccircle cx='60' cy='55' r='6' fill='%230077b6'/%3E%3C/svg%3E" alt="logo" />
-            <h2>LOGO.</h2>
-            <div class="contct">
-                <p>adress email : <br /> cabinitdental35@gmail.com</p>
-                <p>phone number : <br /> 0253388477</p>
+    <<footer id="extra" class="footer">
+    <div class="footer-container">
+        
+        <div class="footer-column">
+            <div class="footer-logo">
+                
+               <h2>Dental<span>Care</span></h2>
             </div>
+            <p>Providing world-class dental care with a touch of comfort and innovation. Your smile is our top priority.</p>
         </div>
-        <div class="fb">
-            <h2>Don't hestate to reach out</h2>
-            <p>our team is ready to answer all your questions and meet your needs . <br /> Your smile deserves the best!</p>
-            <div class="con">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffffff' rx='20'/%3E%3Cpath d='M30 30 L70 30 L70 70 L30 70 Z' fill='%230077b6'/%3E%3C/svg%3E" alt="fb" />
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ffffff'/%3E%3Ccircle cx='50' cy='50' r='25' fill='%230077b6'/%3E%3C/svg%3E" alt="ig" />
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffffff' rx='20'/%3E%3Cpath d='M30 40 L70 40 L70 70 L30 70 Z' fill='%230077b6'/%3E%3C/svg%3E" alt="x" />
-            </div>
-        </div>
-    </section>
 
-    <!-- (script from original – kept for compatibility) -->
-    <script>
-        // original script content (minimal adaptation)
-        window.onload = function() {
-            const savedImage = localStorage.getItem("savedImage");
-            if (savedImage) {
-                // optional: if you want to use it somewhere
-            }
-        };
-        function openFileDialog() { /* ... */ }
-        function loadImage(event) { /* ... */ }
-        function reloadPage() { window.location.reload(); }
-        function displayCurrentDate() { /* ... */ }
-        document.addEventListener("DOMContentLoaded", function() { /* calendar stub */ });
-        function showModal() { /* ... */ }
-        function closeModal() { /* ... */ }
-        function submitNote() { /* ... */ }
-        function createNoteCard(note) { /* ... */ }
-        document.getElementById('out')?.addEventListener('click', function() { /* ... */ });
-        console.log('responsive landing – ready');
-    </script>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#dentists">Our Team</a></li>
+                <li><a href="#features">Why Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Opening Hours</h3>
+            <p>Sat - Thu: 09:00 AM - 05:00 PM</p>
+            <p>Friday: Closed</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul class="contact-info" style="list-style: none;">
+                <li>Email: cabinitdental35@gmail.com</li>
+                <li>Phone: 0253388477</li>
+            </ul>
+            <div class="social-icons">
+                <img src="2.png" alt="Facebook">
+                <img src="3.png" alt="Instagram">
+                <img src="4.png" alt="Twitter">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 LOGO Dental Clinic. All rights reserved.</p>
+    </div>
+</footer>
+
 </body>
 </html>
